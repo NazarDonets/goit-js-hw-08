@@ -95,6 +95,8 @@ window.addEventListener(`keydown`, e => {
    if (e.code === `ArrowRight` && modal.classList.contains(`is-open`)) {
       currentImageIndex = imagesArray.indexOf(modalContentImg.src);
       modalContentImg.src = imagesArray[currentImageIndex + 1];
+
+      // checks if the current image from an array is the first available one and on ArrowLeft click restarts the order from the end of the array
       if (currentImageIndex === imagesArray.length - 1) {
          currentImageIndex = 0;
          modalContentImg.src = imagesArray[currentImageIndex];
@@ -103,6 +105,8 @@ window.addEventListener(`keydown`, e => {
    } else if (e.code === `ArrowLeft` && modal.classList.contains(`is-open`)) {
       currentImageIndex = imagesArray.indexOf(modalContentImg.src);
       modalContentImg.src = imagesArray[currentImageIndex - 1];
+
+      // checks if the current image from an array is actually the last available one and resets the order for the next image on ArrowRight click to start it from the very beginning
       if (currentImageIndex === 0) {
          currentImageIndex = imagesArray.length - 1;
          modalContentImg.src = imagesArray[currentImageIndex];
