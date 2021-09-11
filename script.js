@@ -29,12 +29,12 @@ const galleryItems = createItems(data);
 // inserts markup in DOM
 galleryContainer.insertAdjacentHTML("afterbegin", galleryItems);
 
-// open image functon
+// declarates open image functon
 function openImage(element) {
    element.classList.add(`is-open`);
 };
 
-// close image function
+// declarates close image function
 function closeImage(element) {
    element.classList.remove(`is-open`);
    
@@ -49,7 +49,7 @@ galleryContainer.addEventListener(`click`, e => {
    };
 });
 
-// event listener that accepts CloseModalByClick callback function
+// creates event listener that accepts CloseModalByClick callback function
 modal.addEventListener(`click`, closeModalByClick);
 
 function closeModalByClick(e) {
@@ -60,7 +60,7 @@ function closeModalByClick(e) {
    };
 };
 
-// event listener that accepts CloseModalByKey callback function
+// creates event listener that accepts CloseModalByKey callback function
 window.addEventListener(`keydown`, closeModalByKey);
 
 function closeModalByKey(e) {
@@ -103,7 +103,7 @@ window.addEventListener(`keydown`, e => {
    } else if (e.code === `ArrowLeft` && modal.classList.contains(`is-open`)) {
       currentImageIndex = imagesArray.indexOf(modalContentImg.src);
       modalContentImg.src = imagesArray[currentImageIndex - 1];
-      if (currentImageIndex <= 0) {
+      if (currentImageIndex === 0) {
          currentImageIndex = imagesArray.length - 1;
          modalContentImg.src = imagesArray[currentImageIndex];
       };
