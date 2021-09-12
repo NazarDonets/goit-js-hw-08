@@ -29,22 +29,26 @@ const galleryItems = createItems(data);
 // inserts markup in DOM
 galleryContainer.insertAdjacentHTML('afterbegin', galleryItems);
 
-// declarates open image functon
+// declares open image functon
 function openImage(element) {
 	element.classList.add(`is-open`);
 }
 
-// declarates close image function
+// declares close image function
 function closeImage(element) {
 	element.classList.remove(`is-open`);
+}
+
+function setImageSrcAlt(src, alt) {
+	modalContentImg.src = src;
+	modalContentImg.alt = alt;
 }
 
 // inserts the "hi-res image" src attribute of opened thumbnail item
 galleryContainer.addEventListener(`click`, (e) => {
 	if (e.target.nodeName === `IMG`) {
 		openImage(modal);
-		modalContentImg.src = e.target.dataset.fullimage;
-		modalContentImg.alt = e.target.alt;
+		setImageSrcAlt(e.target.dataset.fullimage, e.target.alt); // inserts image src and alt attributes in the DOM
 	}
 });
 
@@ -57,8 +61,7 @@ function closeModalByClick(e) {
 		e.target.nodeName === `BUTTON`
 	) {
 		closeImage(modal);
-		modalContentImg.src = ''; // resets src attribute to empty string to avoid first load of previously opened image;
-		modalContentImg.alt = ''; // resets alt attribute to empty string to avoid alt attribute of the previously opened image;
+		setImageSrcAlt('', ''); // resets img and src attributes to empty string to avoid first load of previously opened image;
 	}
 }
 
