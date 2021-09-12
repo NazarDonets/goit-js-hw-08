@@ -39,6 +39,7 @@ function closeImage(element) {
 	element.classList.remove(`is-open`);
 }
 
+// declares setter function for the modal image
 function setImageSrcAlt(src, alt) {
 	modalContentImg.src = src;
 	modalContentImg.alt = alt;
